@@ -42,8 +42,6 @@ function getData(callBack) {
 function writeToDocument() {
     getData( function(data) {
         document.getElementById("weather-data").innerHTML = data;
+        console.log(data);
     });
 }
-
-
-//console.log(weatherData);
