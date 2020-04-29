@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Playing with Maps</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <div class="row no-gutters">
+            <a href="index.html" class="col-md-4 logo">
+                
+            </a>
+            <div class="col-md-8">
+                <div class="row no-gutters bg-color-name-title">
+                    <div class="col heading">
+                        <h1 class="name">Playing with Maps</h1>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col">
+                        <ul id="nav" class="list-inline menucontainer">
+                            <li class="col-6 col-sm-2 ui-menu-color-home list-inline-item menuitem">
+                                <a href="index.html" class="hvr-sweep-to-bottom"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <section class="container">
+        <div class="row">
+            <div class="col bg-color-conferences section-column">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="section-heading uppercase">
+                            Conferences And Meetups Attended
+                        </h3>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </div>
+            
+        </div>
+    </section>
+    <footer class="container">
+        <div id="footer-details" class="row">
+            <div class="col-sm-4">
+                <h5 class="uppercase general-sub">About</h5>
+                <p class="inline-block">
+                    Just playing about with Google Maps.
+                </p>
+            </div>
+            <div class="col-sm-4">
+                
+                <p class="inline-block">
+                    
+                </p>
+            </div>
+            
+
+    </footer>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzIGV-yMFW2sZbKjho3bgFebj1ZbzZ7AI&callback=initMap"></script>
+    <script src="assets/js/maps.js"></script>
+    <script src="assets/js/weather.js"></script>
+    
+</body>
+</html>
