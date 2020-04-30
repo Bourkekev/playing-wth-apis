@@ -1,8 +1,11 @@
 
-let city = 2072525;
+//let city = 2964574;
+let city = "Dublin";
+let countryCode = "IE";
 const apiKey = "4adecede8cc646766529fd7932ba0555";
 let tempUnits = "units=metric";
-const baseURL = `http://api.openweathermap.org/data/2.5/weather?id=${city}&${tempUnits}&appid=${apiKey}`;
+const baseURLByID = `http://api.openweathermap.org/data/2.5/weather?id=${city}&${tempUnits}&appid=${apiKey}`;
+const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&${tempUnits}&appid=${apiKey}`;
 
 
 // function getData(type, callBack) {
@@ -43,7 +46,16 @@ function getData(callBack) {
 // without type
 function writeToDocument() {
     getData( function(data) {
-        document.getElementById("weather-data").innerHTML = "Temperature is: " + data.main.temp;
-        console.log(data.main.temp);
+
+        let weather = data.weather;
+        weather.forEach(function(item){
+            //document.getElementById("weather-data").innerHTML = "Weather for " + city + item.sys.country + ": " + item.main;
+
+        });
+        document.getElementById("weather-data").innerHTML = "<p>Weather for " + data.name + ", " + data.sys.country + ": " + data.weather[0].main + "</p>";
+        document.getElementById("weather-data").innerHTML += "<p>Temperature is: " + data.main.temp + " Celcius</p>";
+        
+        //document.getElementById("weather-data").innerHTML = "Temperature is: " + data.main.temp;
+        console.dir(data);
     });
 }
