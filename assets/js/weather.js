@@ -1,7 +1,9 @@
 
 let city = 2072525;
 const apiKey = "4adecede8cc646766529fd7932ba0555";
-const baseURL = `http://api.openweathermap.org/data/2.5/weather?id=${city}&appid=${apiKey}`;
+let tempUnits = "units=metric";
+const baseURL = `http://api.openweathermap.org/data/2.5/weather?id=${city}&${tempUnits}&appid=${apiKey}`;
+
 
 // function getData(type, callBack) {
 //     let xhr = new XMLHttpRequest();
@@ -41,7 +43,7 @@ function getData(callBack) {
 // without type
 function writeToDocument() {
     getData( function(data) {
-        document.getElementById("weather-data").innerHTML = data;
-        console.log(data);
+        document.getElementById("weather-data").innerHTML = "Temperature is: " + data.main.temp;
+        console.log(data.main.temp);
     });
 }
