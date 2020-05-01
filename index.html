@@ -56,8 +56,11 @@
                         <h3 class="section-heading uppercase">
                             Playin with Weather
                         </h3>
-                        <input id="city" value="Dublin, IE">
-                        <button onclick="writeToDocument()">Current Weather</button>
+                        <p>Type in a city to get the weather there. You can also add a comma and country code after to specify the country (e.g. Dublin, IE)</p>
+                        <form>
+                            <input id="city" value="Dublin, IE">
+                            <button type="button" id="get-weather" onclick="writeToDocument()">Current Weather</button>
+                        </form>
                     </div>
                 </div>
                 <div id="weather-data"></div>

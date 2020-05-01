@@ -5,7 +5,7 @@ let countryCode = "IE";
 //let cityCountry = "Dublin, IE";
 const apiKey = "4adecede8cc646766529fd7932ba0555";
 let tempUnits = "units=metric";
-
+let cityInput = document.getElementById("city");
 //set cityCountry to the inputted value
 let cityCountry = document.getElementById("city").value;
 
@@ -13,6 +13,16 @@ const baseURLByID = `http://api.openweathermap.org/data/2.5/weather?id=${city}&$
 //const baseURL = `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&${tempUnits}&appid=${apiKey}`;
 let baseURL;
 
+// Simulate button click on enter
+cityInput.addEventListener("keydown", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("get-weather").click();
+    }
+  });
 
 
 // function getData(type, callBack) {
