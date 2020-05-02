@@ -1,3 +1,6 @@
+//Need to delare these first for Geolocating as a function hapeens outside of initMap
+let map, infoWindow;
+
 function initMap() {
     //map options
     let options = {
@@ -8,7 +11,8 @@ function initMap() {
         }
     }
     let map = new google.maps.Map(document.getElementById("map"), options);
-    
+    infoWindow = new google.maps.InfoWindow;
+
     // Listen for click event on map. 3 paramters the map to listen on (variable map), the event to listen for and a function and we pass the event into the function.
     google.maps.event.addListener(map, 'click', function(event){
         // add a marker with coords gotten from the event listener
@@ -102,6 +106,27 @@ function initMap() {
         }
     }
 
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          let pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('You are here.');
+          infoWindow.open(map);
+          // sets and overrides the map centering location
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+
     // CI Code for map markers and clusters below
     //let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -122,4 +147,11 @@ function initMap() {
     // Add a marker clusterer to manage the markers.
     // var markerCluster = new MarkerClusterer(map, markers,
     //     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+}
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                    'Error: The Geolocation service failed.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
 }
