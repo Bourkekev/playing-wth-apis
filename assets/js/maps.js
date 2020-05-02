@@ -9,6 +9,12 @@ function initMap() {
     }
     let map = new google.maps.Map(document.getElementById("map"), options);
     
+    // Listen for click event on map. 3 paramters the map to listen on (variable map), the event to listen for and a function and we pass the event into the function.
+    google.maps.event.addListener(map, 'click', function(event){
+        // add a marker with coords gotten from the event listener
+        addMarker({coords:event.latLng});
+    });
+
     /* SINGLE MAP MARKER
     var marker = new google.maps.Marker({
         position:  { lat: 53.4246, lng: -6.1210 },
