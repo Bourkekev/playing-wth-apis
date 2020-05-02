@@ -1,26 +1,39 @@
 function initMap() {
-    let map = new google.maps.Map(document.getElementById("map"),{
-        zoom: 3,
+    //map options
+    let options = {
+        zoom: 10,
         center: {
-            lat: 46.619261,
-            lng: -33.134766
+            lat: 53.3498,
+            lng: -6.2603
         }
+    }
+    let map = new google.maps.Map(document.getElementById("map"), options);
+    
+    //google maps icon base url
+    let iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+    
+    var marker = new google.maps.Marker({
+        position:  { lat: 53.4256, lng: -6.1316 },
+        map: map
     });
-    let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+
+    // CI Code for map markers and clusters below
+    //let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     //array of objects
-    let locations = [
-        { lat: 40.785091, lng: -73.968285 },
-        { lat: 41.084045, lng: -73.874245 },
-        { lat: 40.754932, lng: -73.984016 }
-    ];
+    // let locations = [
+    //     { lat: 53.4256, lng: -6.1316 },
+    //     { lat: 53.4509, lng: -6.1501 },
+    //     { lat: 53.3786, lng: -6.0570 }
+    // ];
 
-    let markers = locations.map(function(location, i) {
-        return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length]
-        });
-    });
+    // let markers = locations.map(function(location, i) {
+    //     return new google.maps.Marker({
+    //         position: location,
+    //         label: labels[i % labels.length]
+    //     });
+    // });
 
     // Add a marker clusterer to manage the markers.
     var markerCluster = new MarkerClusterer(map, markers,

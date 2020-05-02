@@ -77,6 +77,6 @@ function writeToDocument() {
         document.getElementById("weather-data").innerHTML += "<p>Temperature is: " + data.main.temp + " Celcius</p>";
         
         //document.getElementById("weather-data").innerHTML = "Temperature is: " + data.main.temp;
-        console.dir(data);
+        //console.dir(data);
     });
 }
