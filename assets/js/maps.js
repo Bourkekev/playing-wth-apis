@@ -31,20 +31,43 @@ function initMap() {
     //google maps icon base url
     let iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
     
+
+    // Array of Markers instead of individual addMarker calls. Place individual addMarker objects into this array
+    let markers = [
+        {
+            coords:{lat: 53.4246, lng: -6.1210 },
+            iconImage: iconBase + "beachflag.png",
+            content: '<h2>Velvet Strand</h2><p>Portmarnock</p><h3>Hi Lynn!</h3>'
+        },
+        {
+            coords:{lat: 53.4509, lng: -6.1501 },
+            content: '<h2>Party Village</h2><p>Malahide</p>'
+        },
+        {
+            coords:{lat: 53.3786, lng: -6.0570 },
+            content: '<h2>Fishing Village</h2><p>Howth</p>'
+        }
+    ];
+
+        //loop through markers
+        for(let i = 0; i < markers.length; i++){
+            addMarker(markers[i]);
+        }
+
     //call addMarker and pass in coords
-    addMarker({
-        coords:{lat: 53.4246, lng: -6.1210 },
-        iconImage: iconBase + "beachflag.png",
-        content: '<h2>Velvet Strand</h2><p>Portmarnock</p><h3>Hi Lynn!</h3>'
-    });
-    addMarker({
-        coords:{lat: 53.4509, lng: -6.1501 },
-        content: '<h2>Party Village</h2><p>Malahide</p>'
-    });
-    addMarker({
-        coords:{lat: 53.3786, lng: -6.0570 },
-        content: '<h2>Fishing Village</h2><p>Howth</p>'
-    });
+    // addMarker({
+    //     coords:{lat: 53.4246, lng: -6.1210 },
+    //     iconImage: iconBase + "beachflag.png",
+    //     content: '<h2>Velvet Strand</h2><p>Portmarnock</p><h3>Hi Lynn!</h3>'
+    // });
+    // addMarker({
+    //     coords:{lat: 53.4509, lng: -6.1501 },
+    //     content: '<h2>Party Village</h2><p>Malahide</p>'
+    // });
+    // addMarker({
+    //     coords:{lat: 53.3786, lng: -6.0570 },
+    //     content: '<h2>Fishing Village</h2><p>Howth</p>'
+    // });
 
     // Add marker function
     function addMarker(props){
