@@ -37,8 +37,14 @@ function initMap() {
         iconImage: iconBase + "beachflag.png",
         content: '<h2>Velvet Strand</h2><p>Portmarnock</p><h3>Hi Lynn!</h3>'
     });
-    addMarker({ coords:{lat: 53.4509, lng: -6.1501 } });
-    addMarker({ coords:{lat: 53.3786, lng: -6.0570 } });
+    addMarker({
+        coords:{lat: 53.4509, lng: -6.1501 },
+        content: '<h2>Party Village</h2><p>Malahide</p>'
+    });
+    addMarker({
+        coords:{lat: 53.3786, lng: -6.0570 },
+        content: '<h2>Fishing Village</h2><p>Howth</p>'
+    });
 
     // Add marker function
     function addMarker(props){
