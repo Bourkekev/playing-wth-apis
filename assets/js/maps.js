@@ -9,9 +9,7 @@ function initMap() {
     }
     let map = new google.maps.Map(document.getElementById("map"), options);
     
-    //google maps icon base url
-    let iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
-    
+    /* SINGLE MAP MARKER
     var marker = new google.maps.Marker({
         position:  { lat: 53.4246, lng: -6.1210 },
         map: map,
@@ -27,6 +25,45 @@ function initMap() {
     marker.addListener('click', function(){
         infoWindow.open(map, marker)
     });
+    END SINGLE MAP MARKER */
+
+    // ADD MULTIPLE MARKERS
+    //google maps icon base url
+    let iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+    
+    //call addMarker and pass in coords
+    addMarker({
+        coords:{lat: 53.4246, lng: -6.1210 },
+        iconImage: iconBase + "beachflag.png",
+        content: '<h2>Velvet Strand</h2><p>Portmarnock</p><h3>Hi Lynn!</h3>'
+    });
+    addMarker({ coords:{lat: 53.4509, lng: -6.1501 } });
+    addMarker({ coords:{lat: 53.3786, lng: -6.0570 } });
+
+    // Add marker function
+    function addMarker(props){
+        let marker = new google.maps.Marker({
+            position: props.coords,
+            map: map,
+            //icon: props.iconImage,
+            //content: props.content
+        });
+        //test if icon image is there (setIcon is GM function). Prevents undefined value if left as above
+        if(props.iconImage){
+            marker.setIcon(props.iconImage);
+        }
+        
+        // need to add listener to listen for that info window. Again test if true otherwise get info window with no info
+        if(props.content){
+            //info window
+            let infoWindow = new google.maps.InfoWindow({
+                content: props.content
+            });
+            marker.addListener('click', function(){
+                infoWindow.open(map, marker)
+            });
+        }
+    }
 
     // CI Code for map markers and clusters below
     //let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
