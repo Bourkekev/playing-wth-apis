@@ -43,11 +43,16 @@ function initMap() {
     
 
     // Array of Markers instead of individual addMarker calls. Place individual addMarker objects into this array
+    let portoContent = `
+        <h2>Velvet Strand</h2>
+        <p>Portmarnock</p>
+        <h3>Hi Lynn!</h3>
+        <p><a href="https://www.visitdublin.com/see-do/details/portmarnock-the-velvet-strand-blue-flag-beach-2019" target="_blank">See more here</a></p>`
     let markers = [
         {
             coords:{lat: 53.4246, lng: -6.1210 },
             iconImage: iconBase + "beachflag.png",
-            content: '<h2>Velvet Strand</h2><p>Portmarnock</p><h3>Hi Lynn!</h3>'
+            content: portoContent
         },
         {
             coords:{lat: 53.4509, lng: -6.1501 },
@@ -113,10 +118,21 @@ function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+
+          //add marker to your location. POS variable from right above
+          let geoMarker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            //icon: props.iconImage,
+            //content: props.content
+          });
           
           infoWindow.setPosition(pos);
           infoWindow.setContent('You are here.');
           infoWindow.open(map);
+          geoMarker.addListener('click', function(){
+            infoWindow.open(map, geoMarker)
+        });
           // sets and overrides the map centering location
           map.setCenter(pos);
         }, function() {
