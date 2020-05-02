@@ -41,10 +41,12 @@ function initMap() {
         },
         {
             coords:{lat: 53.4509, lng: -6.1501 },
+            iconImage: "http://maps.google.com/mapfiles/kml/pal2/icon27.png",
             content: '<h2>Party Village</h2><p>Malahide</p>'
         },
         {
             coords:{lat: 53.3786, lng: -6.0570 },
+            iconImage: "http://maps.google.com/mapfiles/ms/micons/fishing.png",
             content: '<h2>Fishing Village</h2><p>Howth</p>'
         }
     ];
